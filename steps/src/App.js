@@ -10,7 +10,6 @@ export default function App() {
   return (
     <div>
       <Steps />
-      <Steps />
     </div>
   );
 }
@@ -46,21 +45,34 @@ function Steps() {
           </p>
 
           <div className="buttons">
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handlePrevious}
-            >
-              Previous
-            </button>
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+            <Button bgColor="#7950f2" textColor="#fff" onClick={handlePrevious}>
+              {" "}
+              <span>👈</span> Previous
+            </Button>
+
+            <Button
+              bgColor="#7950f2"
+              textColor="#fff"
               onClick={handleNext}
+              text="Next"
             >
-              Next
-            </button>
+              {" "}
+              <span>👉</span>Next
+            </Button>
           </div>
         </div>
       )}
     </div>
+  );
+}
+
+function Button({ textColor, bgColor, onClick, text, emoji }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{ backgroundColor: bgColor, color: textColor }}
+    >
+      <span>{emoji}</span> {text}
+    </button>
   );
 }
