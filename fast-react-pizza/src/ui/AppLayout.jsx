@@ -1,7 +1,7 @@
-import { Outlet, useNavigation } from "react-router-dom"
+import { Outlet, useNavigation } from "react-router-dom";
 
-import CartOverview from "../features/cart/CartOverview"
-import Header from "./Header"
+import CartOverview from "../features/cart/CartOverview";
+import Header from "./Header";
 import Loader from "./Loader";
 
 function AppLayout() {
@@ -9,19 +9,20 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   return (
-    <div className="layout">
-      {isLoading && <Loader/>}
+    <div className="grid-rows-3-[auto_1fr_auto] grid h-screen">
+      {isLoading && <Loader />}
 
-      <Header/>
+      <Header />
 
-      <main>
-        <h1>Content</h1>
-        <Outlet/>
-      </main>
+      <div className="overflow-scroll">
+        <main className="mx-auto max-w-3x">
+          <Outlet />
+        </main>
+      </div>
 
-      <CartOverview/>
+      <CartOverview />
     </div>
-  )
+  );
 }
 
-export default AppLayout
+export default AppLayout;
